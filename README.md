@@ -57,7 +57,7 @@ sudo apt install g++ make pkg-config libncursesw5-dev libsdl2-dev libsdl2-mixer-
 
    ```
    ~/Music/MediaPlayer/test_media
-   ~/Music/MediaPlayer/playlist ( you must create a file playlist.json first)
+   ~/Music/MediaPlayer/playlist
    ```
 
 ## Usage
