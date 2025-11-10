@@ -28,6 +28,7 @@ sudo apt install g++ make pkg-config libncursesw5-dev libsdl2-dev libsdl2-mixer-
    git clone https://github.com/Dunggx03/MediaPlayerApp.git
    ```
 **you must pull the wanted version from remote to your local**
+
 2. Navigate to the project directory:
 
    ```bash
