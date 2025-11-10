@@ -295,3 +295,4 @@ MediaFile* MainFileView::getSelectedFile() const {
                 << " >= pageData.size=" << pageData.size() << std::endl;
     }
     return nullptr;
+}
