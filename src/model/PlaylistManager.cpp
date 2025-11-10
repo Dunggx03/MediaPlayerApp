@@ -127,10 +127,32 @@ void PlaylistManager::loadFromFile(const std::string& filename) {
     }
     savePath_ = filename;
     std::ifstream inFile(filename);
-    if (!inFile.is_open()) {
-        std::cout << "PlaylistManager Info: Playlist file not found or could not be opened: " << filename << ". Starting fresh." << std::endl;
-        return;
+if (!inFile.is_open()) {
+    std::cout << "PlaylistManager Info: Playlist file not found: " << filename 
+              << ". Creating a new empty one..." << std::endl;
+
+    try {
+        fs::path p(filename);
+        if (p.has_parent_path()) {
+            fs::create_directories(p.parent_path()); 
+        }
+
+
+        std::ofstream outFile(filename);
+        if (outFile.is_open()) {
+            outFile << "[]"; 
+            outFile.close();
+            std::cout << "PlaylistManager: Created new playlist file at " << filename << std::endl;
+        } else {
+            std::cerr << "PlaylistManager Error: Failed to create new file at " << filename << std::endl;
+        }
+    } catch (const fs::filesystem_error& e) {
+        std::cerr << "PlaylistManager Error: Filesystem error creating new file: " << e.what() << std::endl;
     }
+
+    return;
+}
+
 
     try {
         json jsonData = json::parse(inFile);
